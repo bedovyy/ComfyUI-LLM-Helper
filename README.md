@@ -21,3 +21,7 @@ pip install -r requirements.txt
 ### `LLMHelper POST /model/unload`
 
 - Sends an unload request to `llama-server` when running in **router mode**, freeing the model from memory.
+
+## Example
+
+<img width="1729" height="1241" alt="image" src="https://github.com/user-attachments/assets/4db57a0d-09fe-40bb-9dbe-c09cc714ce6a" />
