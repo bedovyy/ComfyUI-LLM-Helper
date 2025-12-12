@@ -18,7 +18,7 @@ pip install -r requirements.txt
 - Set your LLM server's `base_url` and select API key from environment variables (loaded securely from `ComfyUI/.env`).
 - Click **"Update model names"** to query the real /models endpoint and instantly refresh the `model_name` dropdown with available models, then use the outputs downstream.
 
-### `LLMHelper POST /model/unload`
+### `LLMHelper POST /models/unload`
 
 - Sends an unload request to `llama-server` when running in **router mode**, freeing the model from memory.
 
