@@ -5,13 +5,20 @@ from comfy_api.latest import io
 
 from .env import get_env_keys, get_env
 
+class AlwaysEqual(str):
+    def __new__(cls, *args):
+        return super().__new__(cls, "*")
+    def __eq__(self, other):
+        return True
+    def __hash__(self):
+        return 0
+
 class GetModels(io.ComfyNode):
     @classmethod
     def define_schema(cls) -> io.Schema:
         env_vars = get_env_keys()
         env_vars.insert(0, "/* no api key */")
         return io.Schema(
-            is_output_node=True,
             node_id="LLMHelper_GetModels",
             display_name="LLMHelper GET /models",
             category="LLMHelper",
@@ -20,7 +27,7 @@ class GetModels(io.ComfyNode):
                 io.String.Input(
                     id="base_url",
                     display_name="Base URL",
-                    tooltip="The base URL to use for /models/unload",
+                    tooltip="The base URL to use for /models",
                     placeholder="http(s)://host[:port]",
                     default="http://localhost:8000",
                 ),
@@ -34,7 +41,7 @@ class GetModels(io.ComfyNode):
                     id="model_name",
                     display_name="Model name",
                     tooltip="Select model.",
-                    options=["set url and click update"]
+                    options=["set url and click update", AlwaysEqual()]
                 ),
             ],
             outputs=[
