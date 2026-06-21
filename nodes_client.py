@@ -66,8 +66,8 @@ class PostModelsUnload(io.ComfyNode):
             category="LLMHelper",
             description="Unload model.",
             inputs=[
-                io.AnyType.Input(id="input_any", display_name="*", tooltip="connect any to run the node"),
                 io.Custom("LLM_CLIENT").Input(id="llm_client", tooltip="LLMClient to unload."),
+                io.AnyType.Input(id="input_any", display_name="*", tooltip="connect any to run the node"),
             ],
             outputs=[
                 io.AnyType.Output(id="output_any", display_name="OUTPUT", tooltip="connect any to bypass"),
@@ -75,7 +75,7 @@ class PostModelsUnload(io.ComfyNode):
         )
     
     @classmethod
-    def validate_inputs(cls, input_any, llm_client) -> bool | str:
+    def validate_inputs(cls, llm_client, input_any) -> bool | str:
         return "base_url must be specified" if llm_client and not llm_client.get("base_url") else True
 
 #    @classmethod
@@ -83,7 +83,7 @@ class PostModelsUnload(io.ComfyNode):
 #        return str(time.time()) # force run
 
     @classmethod
-    async def execute(cls, input_any, llm_client) -> io.NodeOutput:
+    async def execute(cls, llm_client, input_any) -> io.NodeOutput:
         base_url = llm_client["base_url"]
         api_key = get_env(llm_client["env_var"])
         model_name = llm_client["model_name"]
