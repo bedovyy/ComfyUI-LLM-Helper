@@ -1,10 +1,15 @@
-from typing_extensions import override
-from comfy_api.latest import ComfyExtension, io
-from .nodes import *
-from .routes import *
+import os
+from typing import override
 
+from comfy_api.latest import ComfyExtension, io
 from dotenv import load_dotenv
 import folder_paths
+
+from .nodes_client import *
+from .nodes_completions import *
+from .nodes_utils import *
+from .routes import *
+
 
 env_path = os.path.join(folder_paths.base_path, ".env")
 if os.path.exists(env_path):
@@ -16,6 +21,12 @@ class LLMHelperExtension(ComfyExtension):
         return [
             GetModels,
             PostModelsUnload,
+            LLMUnpackClient,
+            PostChatCompletions,
+            LLMMessages,
+            LLMOptions,
+            LLMCustomJsonOptions,
+            PreviewAnyStorable,
         ]
 
 async def comfy_entrypoint() -> LLMHelperExtension:

@@ -1,0 +1,458 @@
+{
+  "id": "40919427-8ea1-4df8-a74b-dc05ea58f2e1",
+  "revision": 0,
+  "last_node_id": 42,
+  "last_link_id": 55,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "b161e282-ba9b-44a4-951a-9fd5ab43c8ad",
+      "pos": [
+        2030,
+        1340
+      ],
+      "size": [
+        410,
+        330
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "llm_client",
+          "type": "LLM_CLIENT",
+          "link": null
+        },
+        {
+          "label": "images",
+          "name": "images.image0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "proxyWidgets": [
+          [
+            "18",
+            "seed"
+          ],
+          [
+            "19",
+            "prompt"
+          ],
+          [
+            "21",
+            "prompt"
+          ],
+          [
+            "28",
+            "option_0.temperature"
+          ],
+          [
+            "28",
+            "option_0.option_1.top_p"
+          ],
+          [
+            "28",
+            "option_0.option_1.option_2.top_k"
+          ],
+          [
+            "28",
+            "option_0.option_1.option_2.option_3.min_p"
+          ],
+          [
+            "28",
+            "option_0.option_1.option_2.option_3.option_4.presence_penalty"
+          ],
+          [
+            "28",
+            "option_0.option_1.option_2.option_3.option_4.option_5.repetition_penalty"
+          ]
+        ]
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "definitions": {
+    "subgraphs": [
+      {
+        "id": "b161e282-ba9b-44a4-951a-9fd5ab43c8ad",
+        "version": 1,
+        "state": {
+          "lastGroupId": 0,
+          "lastNodeId": 42,
+          "lastLinkId": 55,
+          "lastRerouteId": 0
+        },
+        "revision": 0,
+        "config": {},
+        "name": "LLM:ChatCompletions Simple",
+        "inputNode": {
+          "id": -10,
+          "bounding": [
+            1180,
+            1860,
+            128,
+            88
+          ]
+        },
+        "outputNode": {
+          "id": -20,
+          "bounding": [
+            2510,
+            1770,
+            128,
+            68
+          ]
+        },
+        "inputs": [
+          {
+            "id": "a981e752-a5f0-4c27-abcb-e01cc0c549da",
+            "name": "llm_client",
+            "type": "LLM_CLIENT",
+            "linkIds": [
+              22
+            ],
+            "pos": [
+              1284,
+              1884
+            ]
+          },
+          {
+            "id": "f8997311-fc1b-407f-9f7b-e69cacdfd65f",
+            "name": "images.image0",
+            "type": "IMAGE",
+            "linkIds": [
+              36
+            ],
+            "label": "images",
+            "pos": [
+              1284,
+              1904
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "de0d0aa0-cdec-4dd9-9d71-1f011630e8e6",
+            "name": "STRING",
+            "type": "STRING",
+            "linkIds": [
+              28
+            ],
+            "pos": [
+              2534,
+              1794
+            ]
+          }
+        ],
+        "widgets": [],
+        "nodes": [
+          {
+            "id": 18,
+            "type": "LLMHelper_PostChatCompletions",
+            "pos": [
+              2170,
+              1930
+            ],
+            "size": [
+              270,
+              160
+            ],
+            "flags": {},
+            "order": 2,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "llm_client",
+                "localized_name": "llm_client",
+                "name": "llm_client",
+                "type": "LLM_CLIENT",
+                "link": 22
+              },
+              {
+                "localized_name": "llm_messages",
+                "name": "llm_messages",
+                "type": "LLM_MESSAGES",
+                "link": 19
+              },
+              {
+                "label": "llm_options",
+                "localized_name": "llm_options",
+                "name": "llm_options",
+                "shape": 7,
+                "type": "LLM_OPTIONS",
+                "link": 46
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "STRING",
+                "name": "STRING",
+                "type": "STRING",
+                "links": [
+                  28
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LLMHelper_PostChatCompletions"
+            },
+            "widgets_values": [
+              42
+            ]
+          },
+          {
+            "id": 21,
+            "type": "LLMHelper_LLMMessages",
+            "pos": [
+              1770,
+              1720
+            ],
+            "size": [
+              350,
+              180
+            ],
+            "flags": {},
+            "order": 3,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "llm_messages",
+                "name": "llm_messages",
+                "shape": 7,
+                "type": "LLM_MESSAGES",
+                "link": 18
+              },
+              {
+                "label": "image0",
+                "localized_name": "images.image0",
+                "name": "images.image0",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": 36
+              },
+              {
+                "label": "image1",
+                "localized_name": "images.image1",
+                "name": "images.image1",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "label": "user_prompt",
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LLM_MESSAGES",
+                "name": "LLM_MESSAGES",
+                "type": "LLM_MESSAGES",
+                "links": [
+                  19
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LLMHelper_LLMMessages"
+            },
+            "widgets_values": [
+              "jpeg",
+              "user",
+              ""
+            ]
+          },
+          {
+            "id": 28,
+            "type": "LLMHelper_LLMOptions",
+            "pos": [
+              1440,
+              2010
+            ],
+            "size": [
+              270,
+              350
+            ],
+            "flags": {},
+            "order": 0,
+            "mode": 0,
+            "inputs": [
+              {
+                "label": "llm_options",
+                "localized_name": "llm_options",
+                "name": "llm_options",
+                "shape": 7,
+                "type": "LLM_OPTIONS",
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LLM_OPTIONS",
+                "name": "LLM_OPTIONS",
+                "type": "LLM_OPTIONS",
+                "links": [
+                  46
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LLMHelper_LLMOptions"
+            },
+            "widgets_values": [
+              "temperature",
+              1,
+              "top_p",
+              0.95,
+              "top_k",
+              20,
+              "min_p",
+              0,
+              "presence_penalty",
+              1.5,
+              "repetition_penalty",
+              1,
+              "none"
+            ]
+          },
+          {
+            "id": 19,
+            "type": "LLMHelper_LLMMessages",
+            "pos": [
+              1770,
+              1500
+            ],
+            "size": [
+              350,
+              160
+            ],
+            "flags": {},
+            "order": 1,
+            "mode": 0,
+            "inputs": [
+              {
+                "localized_name": "llm_messages",
+                "name": "llm_messages",
+                "shape": 7,
+                "type": "LLM_MESSAGES",
+                "link": null
+              },
+              {
+                "label": "image0",
+                "localized_name": "images.image0",
+                "name": "images.image0",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "label": "system_prompt",
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": null
+              }
+            ],
+            "outputs": [
+              {
+                "localized_name": "LLM_MESSAGES",
+                "name": "LLM_MESSAGES",
+                "type": "LLM_MESSAGES",
+                "links": [
+                  18
+                ]
+              }
+            ],
+            "properties": {
+              "Node name for S&R": "LLMHelper_LLMMessages"
+            },
+            "widgets_values": [
+              "jpeg",
+              "system",
+              "You are a helpful assistant."
+            ]
+          }
+        ],
+        "groups": [],
+        "links": [
+          {
+            "id": 18,
+            "origin_id": 19,
+            "origin_slot": 0,
+            "target_id": 21,
+            "target_slot": 0,
+            "type": "LLM_MESSAGES"
+          },
+          {
+            "id": 19,
+            "origin_id": 21,
+            "origin_slot": 0,
+            "target_id": 18,
+            "target_slot": 1,
+            "type": "LLM_MESSAGES"
+          },
+          {
+            "id": 22,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 18,
+            "target_slot": 0,
+            "type": "LLM_CLIENT"
+          },
+          {
+            "id": 28,
+            "origin_id": 18,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 0,
+            "type": "STRING"
+          },
+          {
+            "id": 36,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 21,
+            "target_slot": 1,
+            "type": "IMAGE"
+          },
+          {
+            "id": 46,
+            "origin_id": 28,
+            "origin_slot": 0,
+            "target_id": 18,
+            "target_slot": 2,
+            "type": "LLM_OPTIONS"
+          }
+        ],
+        "extra": {},
+		"category": "LLMHelper",
+        "description": "ChatCompletions Simple"
+      }
+    ]
+  },
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
