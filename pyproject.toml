@@ -1,0 +1,16 @@
+[project]
+name = "ComfyUI-LLM-Helper"
+description = "A custom nodes for LLM API"
+version = "1.0.0" # Custom Node version. Must be semantically versioned.
+license = { file = "LICENSE" }
+dependencies  = [
+  "python-dotenv"
+] # Filled in from requirements.txt
+
+[project.urls]
+Repository = "https://github.com/bedovyy/ComfyUI-LLM-Helper"
+
+[tool.comfy]
+PublisherId = "bedovyy" # TODO (fill in Publisher ID from Comfy Registry Website).
+DisplayName = "ComfyUI-LLM-Helper" # Display name for the Custom Node. Can be changed later.
+Icon = "https://raw.githubusercontent.com/bedovyy/ComfyUI-LLM-Helper/main/assets/logo.png" # SVG, PNG, JPG or GIF (MAX. 800x400px)
