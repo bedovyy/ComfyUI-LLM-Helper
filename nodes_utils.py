@@ -34,7 +34,7 @@ class PreviewAnyStorable(io.ComfyNode):
         return ["stored"] if output_value[0] else ["source"]
 
     @staticmethod
-    def _truncate_nested_strings(obj, max_len=1000, keep_len=20):
+    def _truncate_nested_strings(obj, max_len=100000, keep_len=20):
         if isinstance(obj, dict):
             return {k: PreviewAnyStorable._truncate_nested_strings(v, max_len, keep_len) for k, v in obj.items()}
         elif isinstance(obj, list):
