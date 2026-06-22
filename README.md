@@ -1,6 +1,13 @@
 # ComfyUI LLM Helper
 
-A collection of helper nodes for working with LLM APIs in ComfyUI, intended to complement other LLM custom nodes.
+A collection of custom nodes for working with LLM APIs in ComfyUI.  
+It supports everything from API client management to direct ChatCompletions execution and workflow utilities.
+
+## Key Features
+
+- **LLM Client & Execution:** Configure API servers securely and run ChatCompletions directly within ComfyUI.
+- **Node Compatibility:** Unpack client data to use with other OpenAI-compatible custom nodes.
+- **Workflow Utilities:** Supports streaming, automatic image handling for multimodal models, and storable text previews.
 
 ## Installation
 
