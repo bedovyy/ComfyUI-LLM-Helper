@@ -33,6 +33,18 @@ class PreviewAnyStorable(io.ComfyNode):
     def check_lazy_status(cls, source=None, output_value=False, **kwargs):
         return ["stored"] if output_value[0] else ["source"]
 
+    @staticmethod
+    def _truncate_nested_strings(obj, max_len=1000, keep_len=20):
+        if isinstance(obj, dict):
+            return {k: PreviewAnyStorable._truncate_nested_strings(v, max_len, keep_len) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [PreviewAnyStorable._truncate_nested_strings(item, max_len, keep_len) for item in obj]
+        elif isinstance(obj, str):
+            if len(obj) >= max_len:
+                return f"{obj[:keep_len]}...{obj[-keep_len:]}"
+            return obj
+        return obj
+
     @classmethod
     def execute(cls, source=None, output_value=False, stored='[""]') -> io.NodeOutput:
         use_stored = output_value[0]
@@ -54,12 +66,12 @@ class PreviewAnyStorable(io.ComfyNode):
                 if source is None:
                     value = "None"
                 elif isinstance(source, str):
-                    value = source
+                    value = cls._truncate_nested_strings(source)
                 elif isinstance(source, (int, float, bool)):
                     value = str(source)
                 else:
                     try:
-                        value = json.dumps(source, indent=4)
+                        value = json.dumps(cls._truncate_nested_strings(source), indent=2, ensure_ascii=False)
                     except Exception:
                         try:
                             value = str(source)

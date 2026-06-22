@@ -1,7 +1,7 @@
 [project]
 name = "ComfyUI-LLM-Helper"
 description = "A custom nodes for LLM API"
-version = "1.0.1" # Custom Node version. Must be semantically versioned.
+version = "1.0.2" # Custom Node version. Must be semantically versioned.
 license = { file = "LICENSE" }
 dependencies  = [
   "python-dotenv"
