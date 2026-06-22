@@ -43,7 +43,8 @@ Or search and install `ComfyUI-LLM-Helper` on ComfyUI-Manager.
 
 ### `LLM:Unpack client`
 
-- Unpacks `base_url`, `api_key`, and `model_name` from the `LLM:Client` node. This allows these values to be used with other OpenAI API nodes. (Caution: Be aware that the `api_key` is output as a plain string.)
+- Unpacks `base_url`, `api_key`, and `model_name` from the `LLM:Client` node. This allows these values to be used with other OpenAI API nodes.
+> Caution: Be aware that the `api_key` is output as a plain string.
 
 ### `LLM:ChatCompletions`
 
