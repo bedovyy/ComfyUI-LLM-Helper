@@ -5,9 +5,24 @@ It supports everything from API client management to direct ChatCompletions exec
 
 ## Key Features
 
-- **LLM Client & Execution:** Configure API servers securely and run ChatCompletions directly within ComfyUI.
-- **Node Compatibility:** Unpack client data to use with other OpenAI-compatible custom nodes.
-- **Workflow Utilities:** Supports streaming, automatic image handling for multimodal models, and storable text previews.
+### Dynamic Model Selection
+
+Easily fetch and update the model list directly from your server with a single click of the `Update model names` button, loaded straight into the combo menu.
+
+<img src="assets/feature_getmodel.webp" />
+
+### Stream & Async Execution
+
+Supports real-time streaming for `/chat/completions` to display generation progress and handle user interrupts instantly. Built on an asynchronous architecture, allowing independent nodes to execute concurrently without blocking your workflow.
+
+<img src="assets/feature_stream_async.webp" />
+
+
+### Dynamic Parameter Control via DynamicCombo
+
+Configure only the parameters you need on the fly without the hassle of chaining multiple node relays.
+
+<img src="assets/feature_llmoptions.webp" />
 
 ## Installation
 
@@ -69,3 +84,4 @@ Or search and install `ComfyUI-LLM-Helper` on ComfyUI-Manager.
 ### `LLM:ChatCompletions Simple` (subgraph blueprint)
 
 - A subgraph blueprint that provides a basic configuration for entering system and user prompts.
+
