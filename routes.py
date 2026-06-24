@@ -1,8 +1,10 @@
-import requests
+import asyncio
 import aiohttp
 from server import PromptServer
 
 from .env import get_env
+
+API_TIMEOUT = 5
 
 routes = PromptServer.instance.routes
 @routes.post('/api/llmhelper/models')
@@ -18,7 +20,7 @@ async def post_model_list(request):
     response = { "models": ["model not found"] }
 
     try:
-        timeout = aiohttp.ClientTimeout(total=1)
+        timeout = aiohttp.ClientTimeout(total=API_TIMEOUT)
         
         async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(f"{base_url}/models", headers=headers) as resp:
@@ -28,9 +30,11 @@ async def post_model_list(request):
                 source = json_data.get("data") or json_data.get("models") or []
                 response["models"] = [item.get("id") or item.get("name") for item in source]
 
+    except asyncio.TimeoutError:
+        response["models"] = [f"Error:Request Timeout ({API_TIMEOUT}s)"]
     except aiohttp.ClientResponseError as e:
-        response["models"] = [f"{e.status}:{e.message}"]
+        response["models"] = [f"{e.status}:{e.message or 'API Error'}"]
     except Exception as e:
-        response["models"] = [f"Error: {str(e)}"]
+        response["models"] = [f"Error:{str(e)}"]
 
     return aiohttp.web.json_response(response)
