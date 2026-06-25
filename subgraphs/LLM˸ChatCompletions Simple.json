@@ -447,8 +447,8 @@
           }
         ],
         "extra": {},
-		"category": "LLMHelper",
-        "description": "ChatCompletions Simple"
+        "category": "LLMHelper",
+        "description": "Simple LLM ChatCompletions subgraph for text generation and prompt expansion."
       }
     ]
   },
